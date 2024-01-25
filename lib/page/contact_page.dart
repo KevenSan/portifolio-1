@@ -64,7 +64,7 @@ class _contact_pageState extends State<contact_page> {
 
                GestureDetector(
                 onTap: () {
-                  launchUrl(Uri.parse('URL DO EMAIL'));
+                  launchUrl(Uri.parse('https://outlook.live.com/owa/'));
                 },
                child: ClipRRect(
                  borderRadius: const BorderRadius.all(Radius.circular(50)),
