@@ -42,22 +42,86 @@ class _contact_pageState extends State<contact_page> {
               mainAxisAlignment: MainAxisAlignment.center,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                GestureDetector(
-                  //Imagem do LinkeDin
-                  onTap: () {
-                    //OnTap == AoClicar
-                    launchUrl(Uri.parse(
-                        'https://www.linkedin.com/in/keven-santos-091234287/'));
-                  },
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(50)),
-                    child: Image.asset(
-                      'assets/imagens/linkedin.jpg',
-                      width: 50,
-                      height: 50,
+                                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        _openOutlookInbox();
+
+                        //launchUrl(Uri.parse('https://outlook.live.com/owa/'));
+                      },
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.all(Radius.circular(50)),
+                        child: Image.asset(
+                          'assets/imagens/email.jpg',
+                          width: 50,
+                          height: 50,
+                        ),
+                      ),
                     ),
-                  ),
+                    const SizedBox(height: 10),
+                    const Text('Email'),
+                    const SizedBox(height: 3),
+                    const Text('kevensan013@outlook.com'),
+                  ],
                 ),
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children:[
+                    GestureDetector(
+                      //Imagem do LinkeDin
+                      onTap: () {
+                        //OnTap == AoClicar
+                        launchUrl(Uri.parse(
+                            'https://www.linkedin.com/in/keven-santos-091234287/'));
+                      },
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.all(Radius.circular(50)),
+                        child: Image.asset(
+                          'assets/imagens/linkedin.jpg',
+                          width: 50,
+                          height: 50,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10,),
+                    const Text('Linkedin'),
+                    const SizedBox(height: 3),
+                    const Text('@KevenSan'),
+                  ],
+                ),
+                const SizedBox(width: 50),
+                
+                //Sizebox para dar espaço
+                
+                Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    GestureDetector(
+                      onTap: () {
+                        launchUrl(Uri.parse(
+                            'https://api.whatsapp.com/send?phone=5527998007596'));
+                      },
+                      child: ClipRRect(
+                        borderRadius: const BorderRadius.all(Radius.circular(50)),
+                        child: Image.asset(
+                          'assets/imagens/whatsapp.jpg',
+                          width: 50,
+                          height: 50,
+                        ),
+                      ),
+                    ),
+                    const SizedBox(height: 10),
+                    const Text('whatsapp'),
+                    const SizedBox(height: 3),
+                    const Text('27 99800-7596'),
+                  ],
+                ),
+
+                const SizedBox(width: 50),
+                               
+                //Sizebox para dar espaço
 
                 const SizedBox(
                   width: 50,
@@ -66,48 +130,7 @@ class _contact_pageState extends State<contact_page> {
 
                 GestureDetector(
                   onTap: () {
-                    launchUrl(Uri.parse(
-                        'https://api.whatsapp.com/send?phone=5527998007596'));
-                  },
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(50)),
-                    child: Image.asset(
-                      'assets/imagens/whatsapp.jpg',
-                      width: 50,
-                      height: 50,
-                    ),
-                  ),
-                ),
-
-                const SizedBox(
-                  width: 50,
-                ),
-                //Sizebox para dar espaço
-
-                GestureDetector(
-                  onTap: () {
-                    _openOutlookInbox();
-
-                    //launchUrl(Uri.parse('https://outlook.live.com/owa/'));
-                  },
-                  child: ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(50)),
-                    child: Image.asset(
-                      'assets/imagens/email.jpg',
-                      width: 50,
-                      height: 50,
-                    ),
-                  ),
-                ),
-
-                const SizedBox(
-                  width: 50,
-                ),
-                //Sizebox para dar espaço
-
-                GestureDetector(
-                  onTap: () {
-                    launchUrl(Uri.parse('Url do GitHub'));
+                    launchUrl(Uri.parse('https://github.com/KevenSan'));
                   },
                   child: ClipRRect(
                     borderRadius: const BorderRadius.all(Radius.circular(50)),
