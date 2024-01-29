@@ -10,6 +10,7 @@ class contact_page extends StatefulWidget {
   State<contact_page> createState() => _contact_pageState();
 }
 
+// ignore: camel_case_types
 class _contact_pageState extends State<contact_page> {
   void _openOutlookInbox() async {
     const String outlookInboxUrl = 'https://outlook.live.com/owa/';
