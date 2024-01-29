@@ -154,7 +154,8 @@ class _HomePageState extends State<HomePage> {
                 ),
                  const About_page(
                   //color: Color(0xFF13131F), Codigo original
-                 ),
+                  
+                ),
                  Section(
                   //color: Color(0xFF13131F), Codigo original
                   color: Colors.amberAccent,
@@ -163,7 +164,7 @@ class _HomePageState extends State<HomePage> {
                   //color: Color(0xFF13131F), Codigo original
                   color: Colors.deepOrange,
                 ),
-                 contact_page(
+               const Contact_page(
                   //Chama a pagina Contato
                 ),
               ],
