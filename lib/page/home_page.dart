@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:portifolio/page/about_page.dart';
 import 'package:portifolio/page/contact_page.dart';
 import '../classes/menu_classe.dart';
 import 'package:portifolio/classes/sections_classe.dart';
@@ -151,10 +152,9 @@ class _HomePageState extends State<HomePage> {
                     //style: AnimatedIcons.play_pause,)
                   ),
                 ),
-                 Section(
+                 const About_page(
                   //color: Color(0xFF13131F), Codigo original
-                  color: Colors.blue,
-                ),
+                 ),
                  Section(
                   //color: Color(0xFF13131F), Codigo original
                   color: Colors.amberAccent,
