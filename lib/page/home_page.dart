@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portifolio/page/about_page.dart';
 import 'package:portifolio/page/contact_page.dart';
+import 'package:portifolio/page/skills_page.dart';
 import '../classes/menu_classe.dart';
 import 'package:portifolio/classes/sections_classe.dart';
 
@@ -27,7 +28,11 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Portifolio'),
+        title: const Text('Portifólio',
+        style: TextStyle(
+          color: Colors.white 
+          ),
+        ),
         //CHAMA As SECOES DO MENU_CLASSE
         actions: [
           Menu((section) {
@@ -100,7 +105,7 @@ class _HomePageState extends State<HomePage> {
               pageSnapping: false,
               children: [
                 Container(
-                  color: Colors.green,
+                  color: const Color(0xFF13131F),
                   child: Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
@@ -127,11 +132,12 @@ class _HomePageState extends State<HomePage> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Text(
-                                  'Oi eu sou',
+                                  'Olá, eu sou',
                                   //Nome do Programador
                                   style: TextStyle(
                                     fontSize: 20,
                                     fontWeight: FontWeight.bold,
+                                    color: Colors.white,
                                   ),
                                 ),
                                 Text(
@@ -140,6 +146,7 @@ class _HomePageState extends State<HomePage> {
                                   style: TextStyle(
                                     fontSize: 30,
                                     fontWeight: FontWeight.bold,
+                                    color: Colors.white,
                                   ),
                                 ),
                               ],
@@ -152,19 +159,18 @@ class _HomePageState extends State<HomePage> {
                     //style: AnimatedIcons.play_pause,)
                   ),
                 ),
-                 const About_page(
+                 const AboutPage(
                   //color: Color(0xFF13131F), Codigo original
-                  
-                ),
-                 Section(
+                  ),
+                const SkillsPage(
                   //color: Color(0xFF13131F), Codigo original
-                  color: Colors.amberAccent,
+                  //color: Color(0xFF13131F),
                 ),
                  Section(
                   //color: Color(0xFF13131F), Codigo original
                   color: Colors.deepOrange,
                 ),
-               const Contact_page(
+               const ContactPage(
                   //Chama a pagina Contato
                 ),
               ],

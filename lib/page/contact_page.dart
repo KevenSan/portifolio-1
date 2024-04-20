@@ -3,15 +3,15 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 // ignore: camel_case_types
-class Contact_page extends StatefulWidget {
-  const Contact_page({super.key});
+class ContactPage extends StatefulWidget {
+  const ContactPage({super.key});
 
   @override
-  State<Contact_page> createState() => _contact_pageState();
+  State<ContactPage> createState() => _ContactPageState();
 }
 
 // ignore: camel_case_types
-class _contact_pageState extends State<Contact_page> {
+class _ContactPageState extends State<ContactPage> {
   void _openOutlookInbox() async {
     const String outlookInboxUrl = 'https://outlook.live.com/owa/';
     if (await canLaunch(outlookInboxUrl as String)) {
@@ -34,266 +34,142 @@ class _contact_pageState extends State<Contact_page> {
     return Container(
       color: const Color(0xFF13131F),
       child: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.symmetric(horizontal: 250),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
-          //crossAxisAlignment: CrossAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        _openOutlookInbox();
-
-                        //launchUrl(Uri.parse('https://outlook.live.com/owa/'));
-                      },
-                      child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(50)),
-                        child: Image.asset(
-                          'assets/imagens/email.jpg',
-                          width: 50,
-                          height: 50,
-                        ),
-                      ),
+            InkWell(
+              mouseCursor: MaterialStateMouseCursor.clickable,
+              onTap: () {
+                //launchUrl(Uri.parse('https://outlook.live.com/owa/'));
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(50)),
+                    child: Image.asset(
+                      'assets/imagens/email.jpg',
+                      width: 50,
+                      height: 50,
                     ),
-                    const SizedBox(height: 10),
-                    const Text('Email',
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'Email',
                     style: TextStyle(color: Colors.white),
-                    ),
-                    const SizedBox(height: 3),
-                    const Text('kevensan013@outlook.com',
-                    style: TextStyle(color: Colors.white10),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(width: 50),
-
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      //Imagem do LinkeDin
-                      onTap: () {
-                        //OnTap == AoClicar
-                        launchUrl(Uri.parse(
-                            'https://www.linkedin.com/in/keven-santos-091234287/'));
-                      },
-                      child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(50)),
-                        child: Image.asset(
-                          'assets/imagens/linkedin.jpg',
-                          width: 50,
-                          height: 50,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text('Linkedin',
+                  ),
+                  const SizedBox(height: 3),
+                  const Text(
+                    'kevensan013@outlook.com',
                     style: TextStyle(color: Colors.white),
-                    ),
-                    const SizedBox(height: 3),
-                    const Text('@KevenSan',
-                    style: TextStyle(color: Colors.white10),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
+              ),
+            ),
 
-                const SizedBox(width: 50),
-                //Sizebox para dar espaço
+            const SizedBox(width: 55),
 
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        launchUrl(Uri.parse(
-                            'https://api.whatsapp.com/send?phone=5527998007596'));
-                      },
-                      child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(50)),
-                        child: Image.asset(
-                          'assets/imagens/whatsapp.jpg',
-                          width: 50,
-                          height: 50,
-                        ),
-                      ),
+            InkWell(
+              mouseCursor: MaterialStateMouseCursor.clickable,
+              onTap: () {
+                launchUrl(Uri.parse(
+                    'https://www.linkedin.com/in/keven-santos-091234287/'));
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(50)),
+                    child: Image.asset(
+                      'assets/imagens/linkedin.jpg',
+                      width: 50,
+                      height: 50,
                     ),
-                    const SizedBox(height: 10),
-                    const Text('whatsapp',
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'Linkedin',
                     style: TextStyle(color: Colors.white),
-                    ),
-                    const SizedBox(height: 3),
-                    const Text('27 99800-7596',
-                    style: TextStyle(color: Colors.white10),
-                    ),
-                  ],
-                ),
-
-                const SizedBox(width: 50),
-                //Sizebox para dar espaço
-
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    GestureDetector(
-                      onTap: () {
-                        launchUrl(Uri.parse('https://github.com/KevenSan'));
-                      },
-                      child: ClipRRect(
-                        borderRadius:
-                            const BorderRadius.all(Radius.circular(50)),
-                        child: Image.asset(
-                          'assets/imagens/github.jpg',
-                          width: 50,
-                          height: 50,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 10),
-                    const Text('GitHub',
+                  ),
+                  const SizedBox(height: 3),
+                  const Text(
+                    '@KevenSan',
                     style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(width: 60),
+
+            InkWell(
+              mouseCursor: MaterialStateMouseCursor.clickable,
+              onTap: () {
+                launchUrl(Uri.parse(
+                    'https://api.whatsapp.com/send?phone=5527998007596'));
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(50)),
+                    child: Image.asset(
+                      'assets/imagens/whatsapp.jpg',
+                      width: 50,
+                      height: 50,
                     ),
-                    const SizedBox(height: 3),
-                    const Text('KevinSan',
-                    style: TextStyle(color: Colors.white10),
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'Whatsapp',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  const SizedBox(height: 3),
+                  const Text(
+                    '(27) 99800-7596',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
+
+            const SizedBox(width: 60),
+            //Sizebox para dar espaço
+
+            InkWell(
+              mouseCursor: MaterialStateMouseCursor.clickable,
+              onTap: () {
+                launchUrl(Uri.parse('https://github.com/KevenSan'));
+              },
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.all(Radius.circular(50)),
+                    child: Image.asset(
+                      'assets/imagens/github.jpg',
+                      width: 50,
+                      height: 50,
                     ),
-                  ],
-                ),
-              ],
-            )
+                  ),
+                  const SizedBox(height: 10),
+                  const Text(
+                    'GitHub',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                  const SizedBox(height: 3),
+                  const Text(
+                    '@kevinSan',
+                    style: TextStyle(color: Colors.white),
+                  ),
+                ],
+              ),
+            ),
           ],
         ),
       ),
     );
   }
 }
-
-
-// CODIGO DO CHATGPT COM O MOUSE VIRANDO DEDO
-
-
-// import 'package:flutter/material.dart';
-// import 'package:url_launcher/url_launcher.dart';
-
-// class ContactPage extends StatefulWidget {
-//   ContactPage({Key? key});
-
-//   @override
-//   State<ContactPage> createState() => _ContactPageState();
-// }
-
-// class _ContactPageState extends State<ContactPage> {
-//   void _openOutlookInbox() async {
-//     const String outlookInboxUrl = 'https://outlook.live.com/owa/';
-//     if (await canLaunch(outlookInboxUrl)) {
-//       await launch(outlookInboxUrl);
-//     } else {
-//       print('Não foi possível abrir o outlook');
-//     }
-//   }
-
-//   void _launch(String url) async {
-//     if (await canLaunch(url)) {
-//       await launch(url);
-//     } else {
-//       print('Não foi possível abrir o link: $url');
-//     }
-//   }
-
-//   Widget _buildContactColumn(String imageUrl, String label, String details, Function() onTap) {
-//     return MouseRegion(
-//       cursor: SystemMouseCursors.click,
-//       child: Column(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: [
-//           GestureDetector(
-//             onTap: onTap,
-//             child: ClipRRect(
-//               borderRadius: const BorderRadius.all(Radius.circular(50)),
-//               child: Image.asset(
-//                 imageUrl,
-//                 width: 50,
-//                 height: 50,
-//               ),
-//             ),
-//           ),
-//           const SizedBox(height: 10),
-//           Text(
-//             label,
-//             style: TextStyle(color: Colors.white),
-//           ),
-//           const SizedBox(height: 3),
-//           Text(
-//             details,
-//             style: TextStyle(color: Colors.white),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Container(
-//       color: const Color(0xFF13131F),
-//       child: Padding(
-//         padding: const EdgeInsets.all(8.0),
-//         child: Row(
-//           mainAxisAlignment: MainAxisAlignment.center,
-//           children: [
-//             _buildContactColumn(
-//               'assets/imagens/email.jpg',
-//               'Email',
-//               'kevensan013@outlook.com',
-//               _openOutlookInbox,
-//             ),
-
-//             const SizedBox(width: 50),
-
-//             _buildContactColumn(
-//               'assets/imagens/linkedin.jpg',
-//               'LinkedIn',
-//               '@KevenSan',
-//               () {
-//                 _launch('https://www.linkedin.com/in/keven-santos-091234287/');
-//               },
-//             ),
-
-//             const SizedBox(width: 50),
-
-//             _buildContactColumn(
-//               'assets/imagens/whatsapp.jpg',
-//               'WhatsApp',
-//               '27 99800-7596',
-//               () {
-//                 _launch('https://api.whatsapp.com/send?phone=5527998007596');
-//               },
-//             ),
-
-//             const SizedBox(width: 50),
-
-//             _buildContactColumn(
-//               'assets/imagens/github.jpg',
-//               'GitHub',
-//               'KevinSan',
-//               () {
-//                 _launch('https://github.com/KevenSan');
-//               },
-//             ),
-//           ],
-//         ),
-//       ),
-//     );
-//   }
-// }
