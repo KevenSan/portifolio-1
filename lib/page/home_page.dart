@@ -6,7 +6,7 @@ import '../classes/menu_classe.dart';
 import 'package:portifolio/classes/sections_classe.dart';
 
 class HomePage extends StatefulWidget {
-  const HomePage({super.key});
+  const HomePage({Key? key}) : super(key: key);
 
   @override
   State<HomePage> createState() => _HomePageState();
@@ -17,167 +17,175 @@ class _HomePageState extends State<HomePage> {
 
   void sectionClick(int section) {
     _pageController.animateToPage(
-       section,
-       duration: const Duration(milliseconds: 500),
-       curve: Curves.ease,
-        );
-      }
+      section,
+      duration: const Duration(milliseconds: 500),
+      curve: Curves.ease,
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: const Text('Portifólio',
-        style: TextStyle(
-          color: Colors.white 
-          ),
+        title: const Text(
+          'Portifólio',
+          style: TextStyle(color: Colors.white),
         ),
-        //CHAMA As SECOES DO MENU_CLASSE
         actions: [
           Menu((section) {
             _pageController.animateToPage(section,
-                duration: const Duration(microseconds: 500),
+                duration: const Duration(milliseconds: 500),
                 curve: Curves.ease);
           }),
         ],
         backgroundColor: const Color(0xFF13131F),
       ),
-      //CODIGO INSERE UM MENU LATERAL :
-      // drawer: Drawer(
-      //   child: ListView(
-      //     padding: EdgeInsets.zero,
-      //     children: <Widget>[
-      //       const DrawerHeader(
-      //         decoration: BoxDecoration(
-      //           color: Colors.blue,
-      //         ),
-      //         child: Text(
-      //           'Menu Lateral',
-      //           style: TextStyle(
-      //             color: Colors.white,
-      //             fontSize: 24,
-      //           ),
-      //         ),
-      //       ),
-      //       ListTile(
-      //         title: const Text('Home'),
-      //         onTap: () {
-      //           SectionClick(0);
-      //           Navigator.pop(context);
-      //         },
-      //       ),
-      //       ListTile(
-      //         title: const Text('Habilidades'),
-      //         onTap: () {
-      //           SectionClick(1);
-      //           Navigator.pop(context);
-      //         },
-      //       ),
-      //         ListTile(
-      //         title: const Text('Projetos'),
-      //         onTap: () {
-      //           SectionClick(2);
-      //           Navigator.pop(context);
-      //         },
-      //       ),
-      //       ListTile(
-      //         title: const Text('Contato'),
-      //         onTap: () {
-      //           SectionClick(3);
-      //           Navigator.pop(context);
-      //         },
-      //       ),
-      //     ],
-      //   ),
-      // ),
-      body: Column(
-        children: [
-          // Menu((section) {
-          //   _pageController.animateToPage(section,
-          //       duration: const Duration(microseconds: 500),
-          //       curve: Curves.ease);
-          // }),
-          Expanded(
-            child: PageView(
-              controller: _pageController,
-              scrollDirection: Axis.vertical,
-              pageSnapping: false,
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth > 600) {
+            return _buildWideLayout(); // Layout para telas maiores (tablet)
+          } else {
+            return _buildTallLayout(); // Layout para telas menores (smartphone)
+          }
+        },
+      ),
+    );
+  }
+
+  Widget _buildWideLayout() {
+    return PageView(
+      controller: _pageController,
+      scrollDirection: Axis.vertical,
+      pageSnapping: false,
+      children: [
+        Container(
+          color: const Color(0xFF13131F),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(200)),
+                  child: Image.asset(
+                    'assets/imagens/img1dev.jpg',
+                    width: 300,
+                    height: 300,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                const SizedBox(width: 30),
                 Container(
-                  color: const Color(0xFF13131F),
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      //crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                             ClipRRect(
-                              borderRadius: const BorderRadius.all(Radius.circular(200)),
-                              child: Image.asset(
-                                'assets/imagens/img1dev.jpg',
-                                //Imagem do Programador
-                                width: 300,
-                                height: 300,
-                                fit: BoxFit.cover,
-                              ),
-                            ),
-                            const SizedBox(width: 30),
-                            const Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  'Olá, eu sou',
-                                  //Nome do Programador
-                                  style: TextStyle(
-                                    fontSize: 20,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                Text(
-                                  'Ronald Keven',
-                                  //Nome do Programador
-                                  style: TextStyle(
-                                    fontSize: 30,
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.white,
-                                  ),
-                                ),
-                              ],
-                            ),                           
-                          ],
+                  width: 300,
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'Olá, eu sou o',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
                         ),
-                      ],
-                    ),
-                  //TextButton (
-                    //style: AnimatedIcons.play_pause,)
+                      ),
+                      Text(
+                        'Ronald Santos',
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.deepPurple,
+                        ),
+                      ),
+                      Text(
+                        'Desenvolvedor FullStack',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-                 const AboutPage(
-                  //color: Color(0xFF13131F), Codigo original
-                  ),
-                const SkillsPage(
-                  //color: Color(0xFF13131F), Codigo original
-                  //color: Color(0xFF13131F),
-                ),
-                 Section(
-                  //color: Color(0xFF13131F), Codigo original
-                  color: Colors.deepOrange,
-                ),
-               const ContactPage(
-                  //Chama a pagina Contato
                 ),
               ],
             ),
-          )
-        ],
-      ),
+          ),
+        ),
+        const AboutPage(),
+        SkillsPage(),
+        Section(color: Colors.deepOrange),
+        const ContactPage(),
+      ],
+    );
+  }
+
+  Widget _buildTallLayout() {
+    return PageView(
+      controller: _pageController,
+      scrollDirection: Axis.vertical,
+      pageSnapping: false,
+      children: [
+        Container(
+          color: const Color(0xFF13131F),
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                ClipRRect(
+                  borderRadius: const BorderRadius.all(Radius.circular(200)),
+                  child: Image.asset(
+                    'assets/imagens/img1dev.jpg',
+                    width: 300,
+                    height: 300,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+                const SizedBox(height: 20),
+                Container(
+                  width: double.infinity,
+                  child: const Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Text(
+                        'Olá, eu sou o',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                      Text(
+                        'Ronald Santos',
+                        style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.deepPurple,
+                        ),
+                      ),
+                      Text(
+                        'Desenvolvedor FullStack',
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
+        const AboutPage(),
+        const SkillsPage(),
+        Section(color: Colors.deepOrange),
+        const ContactPage(),
+      ],
     );
   }
 }

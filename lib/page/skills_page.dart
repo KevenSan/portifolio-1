@@ -2,174 +2,105 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class SkillsPage extends StatelessWidget {
-  //final Color color;
-  const SkillsPage({super.key});
+  const SkillsPage({Key? key}) : super(key: key);
 
   void _launch(String url) async {
-    if (await canLaunchUrl(url as Uri)) {
-      await launchUrl(url as Uri);
+    if (await canLaunch(url)) {
+      await launch(url);
     } else {
-      print('Não foi possivel abrir o link : $url');
+      print('Não foi possível abrir o link: $url');
     }
   }
+
   @override
   Widget build(BuildContext context) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        if (constraints.maxWidth > 600) {
+          return _buildWideLayout(); //TELA GRANDE
+        } else {
+          return _buildTallLayout(); //TELA PEQUENA
+        }
+      },
+    );
+  }
+
+  Widget _buildWideLayout() {
+    return Expanded(
+      child: Container(
+        color: const Color(0xFF13131F),
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: GridView(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+            ),
+            //scrollDirection: Axis.horizontal,
+            physics: const NeverScrollableScrollPhysics(),
+            children: [
+              _buildSkillItem('Flutter', 'assets/imagens/flutter_logo.png'),
+              _buildSkillItem('Dart', 'assets/imagens/logo_dart.png'),
+              _buildSkillItem('HTML', 'assets/imagens/html.png'),
+              _buildSkillItem('JavaScript', 'assets/imagens/javascript.png'),
+              _buildSkillItem('CSS', 'assets/imagens/css.png'),
+              _buildSkillItem('SQL', 'assets/imagens/sql_logo.png'),
+              _buildSkillItem('Delphi', 'assets/imagens/logo_delphi.png'),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTallLayout() {
+    return Expanded(
+      child: Container(
+        color: const Color(0xFF13131F),
+        child: Padding(
+          padding: EdgeInsets.all(20),
+          child: GridView(
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2),
+            physics: const NeverScrollableScrollPhysics(),
+            children: [
+              _buildSkillItem('Flutter', 'assets/imagens/flutter_logo.png'),
+              _buildSkillItem('Dart', 'assets/imagens/logo_dart.png'),
+              _buildSkillItem('HTML', 'assets/imagens/html.png'),
+              _buildSkillItem('JavaScript', 'assets/imagens/javascript.png'),
+              _buildSkillItem('CSS', 'assets/imagens/css.png'),
+              _buildSkillItem('SQL', 'assets/imagens/sql_logo.png'),
+              _buildSkillItem('Delphi', 'assets/imagens/logo_delphi.png'),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildSkillItem(String label, String imagePath) {
     return Container(
-      color: const Color(0xFF13131F),
-      child: Padding(
-        padding: EdgeInsets.all(150),
-        child: Row(
+      width: double.infinity,
+      height: 200,
+      child: InkWell(
+        mouseCursor: WidgetStateMouseCursor.clickable,
+        onTap: () {
+          // _launch('https://nomeDoSite.com.br');
+        },
+        child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
-          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            InkWell(
-              mouseCursor: MaterialStateMouseCursor.clickable,
-              onTap: () {
-                // launchUrl(Uri.parse('https://nomeDoSite.com.br'));
-              },            
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Flutter',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  const SizedBox(height: 10),
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(50)),
-                    child: Image.asset(
-                      'assets/imagens/flutter_logo.png',
-                      width: 130,
-                      height: 130,
-                    ),
-                  ),
-                ],
+            ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(50)),
+              child: Image.asset(
+                imagePath,
+                width: 105,
+                height: 105,
               ),
             ),
-           const SizedBox(width: 60),
-                       InkWell(
-              mouseCursor: MaterialStateMouseCursor.clickable,
-              onTap: () {
-                // launchUrl(Uri.parse('https://nomeDoSite.com.br'));
-              },            
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Html',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  const SizedBox(height: 10),
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(50)),
-                    child: Image.asset(
-                      'assets/imagens/html.png',
-                      width: 130,
-                      height: 130,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 60),
-                       InkWell(
-              mouseCursor: MaterialStateMouseCursor.clickable,
-              onTap: () {
-                // launchUrl(Uri.parse('https://nomeDoSite.com.br'));
-              },            
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'JavaScript',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  const SizedBox(height: 10),
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(50)),
-                    child: Image.asset(
-                      'assets/imagens/javascript.png',
-                      width: 130,
-                      height: 130,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 60),
-                       InkWell(
-              mouseCursor: MaterialStateMouseCursor.clickable,
-              onTap: () {
-                // launchUrl(Uri.parse('https://nomeDoSite.com.br'));
-              },            
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Css',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  const SizedBox(height: 10),
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(50)),
-                    child: Image.asset(
-                      'assets/imagens/css.png',
-                      width: 130,
-                      height: 130,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 60),
-                       InkWell(
-              mouseCursor: MaterialStateMouseCursor.clickable,
-              onTap: () {
-                // launchUrl(Uri.parse('https://nomeDoSite.com.br'));
-              },            
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Sql',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  const SizedBox(height: 10),
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(50)),
-                    child: Image.asset(
-                      'assets/imagens/flutter_logo.png',
-                      width: 130,
-                      height: 130,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            const SizedBox(width: 60),
-                       InkWell(
-              mouseCursor: MaterialStateMouseCursor.clickable,
-              onTap: () {
-                // launchUrl(Uri.parse('https://nomeDoSite.com.br'));
-              },            
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  const Text(
-                    'Delphi',
-                    style: TextStyle(color: Colors.white),
-                  ),
-                  const SizedBox(height: 10),
-                  ClipRRect(
-                    borderRadius: const BorderRadius.all(Radius.circular(50)),
-                    child: Image.asset(
-                      'assets/imagens/flutter_logo.png',
-                      width: 130,
-                      height: 130,
-                    ),
-                  ),
-                ],
-              ),
+            //const SizedBox(height: 5),
+            Text(
+              label,
+              style: const TextStyle(color: Colors.white),
             ),
           ],
         ),
