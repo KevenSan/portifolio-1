@@ -40,6 +40,7 @@ class _ContactPageState extends State<ContactPage> {
   }
 
   Widget _buildWideLayout() {
+    //PARA TELAS GRANDES
     return Container(
       color: const Color(0xFF13131F),
       child: Padding(
@@ -88,6 +89,7 @@ class _ContactPageState extends State<ContactPage> {
   }
 
   Widget _buildTallLayout() {
+    //PARA TELAS PEQUENAS
     return Container(
       color: const Color(0xFF13131F),
       child: Padding(

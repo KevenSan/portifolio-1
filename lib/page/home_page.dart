@@ -4,7 +4,7 @@ import 'package:portifolio/page/contact_page.dart';
 import 'package:portifolio/page/projects_page.dart';
 import 'package:portifolio/page/skills_page.dart';
 import '../classes/menu_classe.dart';
-import 'package:portifolio/classes/sections_classe.dart';
+//import 'package:portifolio/classes/sections_classe.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -115,8 +115,8 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         const AboutPage(),
-        SkillsPage(),
-        Section(color: Colors.deepOrange),
+        const SkillsPage(),
+        const ProjectsPage(), // Adicionando a ProjectsPage aqui
         const ContactPage(),
       ],
     );
@@ -184,7 +184,7 @@ class _HomePageState extends State<HomePage> {
         ),
         const AboutPage(),
         const SkillsPage(),
-        const ProjectPage(),
+        const ProjectsPage(), // Adicionando a ProjectsPage aqui
         const ContactPage(),
       ],
     );
