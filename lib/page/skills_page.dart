@@ -14,64 +14,58 @@ class SkillsPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        if (constraints.maxWidth > 600) {
-          return _buildWideLayout(); //TELA GRANDE
-        } else {
-          return _buildTallLayout(); //TELA PEQUENA
-        }
-      },
+    return Scaffold(
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (constraints.maxWidth > 600) {
+            return _buildWideLayout(); //TELA GRANDE
+          } else {
+            return _buildTallLayout(); //TELA PEQUENA
+          }
+        },
+      ),
     );
   }
 
   Widget _buildWideLayout() {
-    return Expanded(
-      child: Container(
-        color: const Color(0xFF13131F),
-        child: Padding(
-          padding: EdgeInsets.all(20),
-          child: GridView(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-            ),
-            //scrollDirection: Axis.horizontal,
-            physics: const NeverScrollableScrollPhysics(),
-            children: [
-              _buildSkillItem('Flutter', 'assets/imagens/flutter_logo.png'),
-              _buildSkillItem('Dart', 'assets/imagens/logo_dart.png'),
-              _buildSkillItem('HTML', 'assets/imagens/html.png'),
-              _buildSkillItem('JavaScript', 'assets/imagens/javascript.png'),
-              _buildSkillItem('CSS', 'assets/imagens/css.png'),
-              _buildSkillItem('SQL', 'assets/imagens/sql_logo.png'),
-              _buildSkillItem('Delphi', 'assets/imagens/logo_delphi.png'),
-            ],
-          ),
+    return Container(
+      color: const Color(0xFF13131F),
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: GridView.count(
+          crossAxisCount: 4,
+          physics: const NeverScrollableScrollPhysics(),
+          children: [
+            _buildSkillItem('Flutter', 'assets/imagens/flutter_logo.png'),
+            _buildSkillItem('Dart', 'assets/imagens/logo_dart.png'),
+            _buildSkillItem('Delphi', 'assets/imagens/logo_delphi.png'),
+            _buildSkillItem('JavaScript', 'assets/imagens/javascript.png'),
+            _buildSkillItem('CSS', 'assets/imagens/css.png'),
+            _buildSkillItem('SQL', 'assets/imagens/sql_logo.png'),
+            //_buildSkillItem('Delphi', 'assets/imagens/logo_delphi.png'),
+          ],
         ),
       ),
     );
   }
 
   Widget _buildTallLayout() {
-    return Expanded(
-      child: Container(
-        color: const Color(0xFF13131F),
-        child: Padding(
-          padding: EdgeInsets.all(20),
-          child: GridView(
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2),
-            physics: const NeverScrollableScrollPhysics(),
-            children: [
-              _buildSkillItem('Flutter', 'assets/imagens/flutter_logo.png'),
-              _buildSkillItem('Dart', 'assets/imagens/logo_dart.png'),
-              _buildSkillItem('HTML', 'assets/imagens/html.png'),
-              _buildSkillItem('JavaScript', 'assets/imagens/javascript.png'),
-              _buildSkillItem('CSS', 'assets/imagens/css.png'),
-              _buildSkillItem('SQL', 'assets/imagens/sql_logo.png'),
-              _buildSkillItem('Delphi', 'assets/imagens/logo_delphi.png'),
-            ],
-          ),
+    return Container(
+      color: const Color(0xFF13131F),
+      child: Padding(
+        padding: const EdgeInsets.all(20),
+        child: GridView.count(
+          crossAxisCount: 2,
+          physics: const NeverScrollableScrollPhysics(),
+          children: [
+            _buildSkillItem('Flutter', 'assets/imagens/flutter_logo.png'),
+            _buildSkillItem('Dart', 'assets/imagens/logo_dart.png'),
+            _buildSkillItem('HTML', 'assets/imagens/logo_delphi.png'),
+            _buildSkillItem('JavaScript', 'assets/imagens/javascript.png'),
+            _buildSkillItem('CSS', 'assets/imagens/css.png'),
+            _buildSkillItem('SQL', 'assets/imagens/sql_logo.png'),
+            //_buildSkillItem('Delphi', 'assets/imagens/logo_delphi.png'),
+          ],
         ),
       ),
     );
@@ -82,7 +76,7 @@ class SkillsPage extends StatelessWidget {
       width: double.infinity,
       height: 200,
       child: InkWell(
-        mouseCursor: WidgetStateMouseCursor.clickable,
+        mouseCursor: MaterialStateMouseCursor.clickable,
         onTap: () {
           // _launch('https://nomeDoSite.com.br');
         },
@@ -97,7 +91,7 @@ class SkillsPage extends StatelessWidget {
                 height: 105,
               ),
             ),
-            //const SizedBox(height: 5),
+            const SizedBox(height: 10),
             Text(
               label,
               style: const TextStyle(color: Colors.white),

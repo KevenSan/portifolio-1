@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:portifolio/page/about_page.dart';
 import 'package:portifolio/page/contact_page.dart';
+import 'package:portifolio/page/projects_page.dart';
 import 'package:portifolio/page/skills_page.dart';
 import '../classes/menu_classe.dart';
 import 'package:portifolio/classes/sections_classe.dart';
@@ -183,7 +184,7 @@ class _HomePageState extends State<HomePage> {
         ),
         const AboutPage(),
         const SkillsPage(),
-        Section(color: Colors.deepOrange),
+        const ProjectPage(),
         const ContactPage(),
       ],
     );
