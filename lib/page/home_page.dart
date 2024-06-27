@@ -35,7 +35,8 @@ class _HomePageState extends State<HomePage> {
         ),
         actions: [
           Menu((section) {
-            _pageController.animateToPage(section,
+            _pageController.animateToPage(
+                section,
                 duration: const Duration(milliseconds: 500),
                 curve: Curves.ease);
           }),
@@ -100,7 +101,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Text(
-                        'Desenvolvedor FullStack',
+                        'Desenvolvedor Front-end',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -168,7 +169,7 @@ class _HomePageState extends State<HomePage> {
                         ),
                       ),
                       Text(
-                        'Desenvolvedor FullStack',
+                        'Desenvolvedor Front-end',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.bold,
@@ -182,10 +183,10 @@ class _HomePageState extends State<HomePage> {
             ),
           ),
         ),
-        const AboutPage(),
-        const SkillsPage(),
-        const ProjectsPage(), // Adicionando a ProjectsPage aqui
-        const ContactPage(),
+        AboutPage(),
+        SkillsPage(),
+        ProjectsPage(),
+        ContactPage(),
       ],
     );
   }

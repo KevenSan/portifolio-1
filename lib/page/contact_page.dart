@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class ContactPage extends StatefulWidget {
-  const ContactPage({super.key});
+  const ContactPage({Key? key}) : super(key: key);
 
   @override
   State<ContactPage> createState() => _ContactPageState();
@@ -31,16 +31,15 @@ class _ContactPageState extends State<ContactPage> {
     return LayoutBuilder(
       builder: (context, constraints) {
         if (constraints.maxWidth > 600) {
-          return _buildWideLayout(); // TELA GRANDE
+          return _buildWideLayout(); // Layout para telas grandes
         } else {
-          return _buildTallLayout(); // TELA PEQUENA
+          return _buildSmallLayout(); // Layout para telas pequenas
         }
       },
     );
   }
 
   Widget _buildWideLayout() {
-    //PARA TELAS GRANDES
     return Container(
       color: const Color(0xFF13131F),
       child: Padding(
@@ -88,16 +87,14 @@ class _ContactPageState extends State<ContactPage> {
     );
   }
 
-  Widget _buildTallLayout() {
-    //PARA TELAS PEQUENAS
+  Widget _buildSmallLayout() {
     return Container(
       color: const Color(0xFF13131F),
       child: Padding(
-        padding: const EdgeInsets.all(25),
-        child: GridView.count(
-          crossAxisCount: 2,
-          crossAxisSpacing: 20,
-          mainAxisSpacing: 20,
+        padding: const EdgeInsets.all(20),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             _buildContactItem(
               'Email',
@@ -107,22 +104,32 @@ class _ContactPageState extends State<ContactPage> {
                 _openOutlookInbox();
               },
             ),
-            _buildContactItem(
-              'LinkedIn',
-              '@KevenSan',
-              'assets/imagens/linkedin.png',
-              () {
-                _launch('https://www.linkedin.com/in/keven-santos-091234287/');
-              },
+            const SizedBox(height: 80),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                _buildContactItem(
+                  'LinkedIn',
+                  '@KevenSan',
+                  'assets/imagens/linkedin.png',
+                  () {
+                    _launch(
+                        'https://www.linkedin.com/in/keven-santos-091234287/');
+                  },
+                ),
+                const SizedBox(width: 80),
+                _buildContactItem(
+                  'WhatsApp',
+                  '(27) 99800-7596',
+                  'assets/imagens/whatsapp.png',
+                  () {
+                    _launch(
+                        'https://api.whatsapp.com/send?phone=5527998007596');
+                  },
+                ),
+              ],
             ),
-            _buildContactItem(
-              'WhatsApp',
-              '(27) 99800-7596',
-              'assets/imagens/whatsapp.png',
-              () {
-                _launch('https://api.whatsapp.com/send?phone=5527998007596');
-              },
-            ),
+            const SizedBox(height: 80),
             _buildContactItem(
               'GitHub',
               '@kevinSan',

@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 
 class ProjectsPage extends StatelessWidget {
@@ -9,29 +10,66 @@ class ProjectsPage extends StatelessWidget {
       color: const Color(0xFF13131F),
       child: Padding(
         padding: const EdgeInsets.all(20.0),
-        child: GridView.count(
-          crossAxisCount: 3,
-          crossAxisSpacing: 20.0,
-          mainAxisSpacing: 20.0,
-          children: const [
-            ProjectItem(
-              imageUrl: 'assets/imagens/project_0.png',
-              description: 'Description for project 0.',
-              dialogText: 'Esta é descricção explicativa do projeto 0.',
-            ),
-            ProjectItem(
-              imageUrl: 'assets/imagens/project_1.png',
-              description: 'Description for project 1.',
-              dialogText: 'Esta é descricção explicativa do projeto 1.',
-            ),
-            ProjectItem(
-              imageUrl: 'assets/imagens/project_2.png',
-              description: 'Description for project 2.',
-              dialogText: 'Esta é descricção explicativa do projeto 2.',
-            ),
-          ],
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            if (constraints.maxWidth > 600) {
+              return _buildWideLayout();
+            } else {
+              return _buildSmallLayout();
+            }
+          },
         ),
       ),
+    );
+  }
+
+  Widget _buildWideLayout() {
+    return GridView.count(
+      crossAxisCount: 3,
+      crossAxisSpacing: 20.0,
+      mainAxisSpacing: 20.0,
+      children: const [
+        ProjectItem(
+          imageUrl: 'assets/imagens/project_0.png',
+          description: 'Description for project 0.',
+          dialogText: 'This is the explanatory description for project 0.',
+        ),
+        ProjectItem(
+          imageUrl: 'assets/imagens/project_1.png',
+          description: 'Description for project 1.',
+          dialogText: 'This is the explanatory description for project 1.',
+        ),
+        ProjectItem(
+          imageUrl: 'assets/imagens/project_2.png',
+          description: 'Description for project 2.',
+          dialogText: 'This is the explanatory description for project 2.',
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSmallLayout() {
+    return GridView.count(
+      crossAxisCount: 1,
+      mainAxisSpacing: 20,
+      //physics: const NeverScrollableScrollPhysics(),
+      children: const [
+        ProjectItem(
+          imageUrl: 'assets/imagens/project_0.png',
+          description: 'Description for project 0.',
+          dialogText: 'This is the explanatory description for project 0.',
+        ),
+        ProjectItem(
+          imageUrl: 'assets/imagens/project_1.png',
+          description: 'Description for project 1.',
+          dialogText: 'This is the explanatory description for project 1.',
+        ),
+        ProjectItem(
+          imageUrl: 'assets/imagens/project_2.png',
+          description: 'Description for project 2.',
+          dialogText: 'This is the explanatory description for project 2.',
+        ),
+      ],
     );
   }
 }
@@ -82,6 +120,7 @@ class _ProjectItemState extends State<ProjectItem> {
                     : null,
               ),
             ),
+            height: 300, // Ajuste aqui o tamanho da imagem conforme necessário
           ),
           if (_isHovered)
             Center(
@@ -122,7 +161,7 @@ class ProjectDetailDialog extends StatelessWidget {
       ),
       child: Container(
         height: 400,
-        width: MediaQuery.sizeOf(context).width * 0.50,
+        width: MediaQuery.of(context).size.width * 0.50,
         padding: const EdgeInsets.all(20.0),
         child: Row(
           children: [
@@ -148,7 +187,6 @@ class ProjectDetailDialog extends StatelessWidget {
                   ),
                   const SizedBox(height: 10),
                   Text(description),
-                  //const SizedBox(height: 5),
                   Spacer(),
                   Align(
                     alignment: Alignment.bottomCenter,

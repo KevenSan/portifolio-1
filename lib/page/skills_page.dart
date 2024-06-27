@@ -20,7 +20,7 @@ class SkillsPage extends StatelessWidget {
           if (constraints.maxWidth > 600) {
             return _buildWideLayout(); //TELA GRANDE
           } else {
-            return _buildTallLayout(); //TELA PEQUENA
+            return _buildSmallLayout(); //TELA PEQUENA
           }
         },
       ),
@@ -49,7 +49,7 @@ class SkillsPage extends StatelessWidget {
     );
   }
 
-  Widget _buildTallLayout() {
+  Widget _buildSmallLayout() {
     return Container(
       color: const Color(0xFF13131F),
       child: Padding(
@@ -74,9 +74,9 @@ class SkillsPage extends StatelessWidget {
   Widget _buildSkillItem(String label, String imagePath) {
     return Container(
       width: double.infinity,
-      height: 200,
+      height: 110,
       child: InkWell(
-        mouseCursor: MaterialStateMouseCursor.clickable,
+        mouseCursor: WidgetStateMouseCursor.clickable,
         onTap: () {
           // _launch('https://nomeDoSite.com.br');
         },
